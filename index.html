@@ -3,8 +3,8 @@ layout: default
 title: HN007's Bitcoin Test
 ---
 <div class="blurb">
-	<h1>Hi all, have a fun with Bitcoin!</h1>
-    <h3>Private key to wallet impor format</h3>
+	<h1>Hi all, have fun with Bitcoin!</h1>
+    	<h2>Private key to wallet impor format</h2>
 	<script src="./app.js"> </script>
 	<script>
       
@@ -55,7 +55,7 @@ title: HN007's Bitcoin Test
 
 			}
 	</script>
-    <button type="button" id="Random" onClick='createRandomPrvKey()'>Random</button>
+    		<button type="button" id="Random" onClick='createRandomPrvKey()'>Random</button>
 	<p>1 - Private key</p>
 	<form>
 		<input type='text' id='prvKey2' name='private2' size='90' value="0C28FCA386C7A227600B2FE50B7CAE11EC86D3BF1FBE471BE89827E19D72AA1D" />
@@ -84,17 +84,6 @@ title: HN007's Bitcoin Test
 	<p>7 - Base58 encoding of 6</p>
 	<form>
 		<input type='text' id='wif' name='wif2' size='70' value="5HueCGU8rMjxEXxiPuD5BDku4MkFqeZyd4dZ1jvhTVqvbTLvyTJ" />
-	</form>
-	
-	<form name="encoder" action="#" onSubmit="return false;" style="width:550px; border: 1px black solid;">
-	<br>
-	<div><strong>Bitcoin Address Base58 Encoder</strong></div>
-	<br>
-	Input:
-	<div><input type="text" id="eaddress" name="address" style="width: 500px; border-width: 1px; padding: 5px; font-family: courier" /></div>
-	<div><input type="button" id="eclick" value="Encode address from hex." style="width: 200px; border-width: 1px; padding: 5px;" onclick="this.form.result.value = process_address('encode', this.form.address.value);" /></div>
-	<div><input type="text" name="result" style="width: 500px; border-width: 1px; padding: 5px; font-family: courier" /></div>
-	</br>
 	</form>
 
 </div><!-- /.blurb -->
