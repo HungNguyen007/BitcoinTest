@@ -1,0 +1,100 @@
+---
+layout: default
+title: HN007's Bitcoin Test
+---
+<div class="blurb">
+	<h1>Hi all, have a fun with Bitcoin!</h1>
+    <h3>Private key to wallet impor format</h3>
+	<script src="./app.js"> </script>
+	<script>
+      
+		function JS_ConvertPrvKey2WIF() { 
+				var prvKey = document.getElementById("prvKey2").value;
+				var extPrvKey;
+				var firstSHA256;
+				var secondSHA256;
+				var extPrvKeyCS;
+				var wif;
+				var error = false;
+
+				/*Evaluating the Private key input */
+				//To do
+				error = true;
+
+				if (error != false)
+				{
+								extPrvKey = '80' + prvKey;
+								document.getElementById("extPrvKey").value  = extPrvKey;
+
+								const firstSHA256Bytes = foo.Buffer.from(extPrvKey, 'hex')
+								firstSHA256 = foo.createHash('sha256').update(firstSHA256Bytes).digest();
+								document.getElementById("firstSHA256").value  = firstSHA256.toString('hex').toUpperCase();
+
+								const secondSHA256Bytes = foo.Buffer.from(firstSHA256, 'hex')
+								secondSHA256 = foo.createHash('sha256').update(secondSHA256Bytes).digest();
+								document.getElementById("secondSHA256").value  = secondSHA256.toString('hex').toUpperCase();
+
+								var checkSum = secondSHA256.toString('hex').substring(0,8);
+								document.getElementById("CKHSUM").value  = checkSum.toUpperCase();
+
+								extPrvKeyCS = extPrvKey + checkSum;
+								document.getElementById("extPrKeyCKHSUM").value  = extPrvKeyCS.toUpperCase();
+
+								const bytes = foo.Buffer.from(extPrvKeyCS, 'hex');
+								const wif = foo.base58.encode(bytes);
+								document.getElementById("wif").value  = wif;
+
+				}
+				
+		}
+
+			function createRandomPrvKey() {
+			    var randomBytes = foo.randomBytes(32)
+					document.getElementById("prvKey2").value = randomBytes.toString('hex').toUpperCase()
+					JS_ConvertPrvKey2WIF()
+
+			}
+	</script>
+    <button type="button" id="Random" onClick='createRandomPrvKey()'>Random</button>
+	<p>1 - Private key</p>
+	<form>
+		<input type='text' id='prvKey2' name='private2' size='90' value="0C28FCA386C7A227600B2FE50B7CAE11EC86D3BF1FBE471BE89827E19D72AA1D" />
+		<button type="button" id="privatePost2" onClick='JS_ConvertPrvKey2WIF()'>Convert</button>
+	</form>
+	<p>2 - Add 0x80 byte to the front</p>
+	<form>
+		<input type='text' id='extPrvKey' size='90' value="800C28FCA386C7A227600B2FE50B7CAE11EC86D3BF1FBE471BE89827E19D72AA1D" />
+	</form>
+	<p>3 - SHA-256 hash of 2</p>
+	<form>
+		<input type='text' id='firstSHA256' size='90' value="8147786C4D15106333BF278D71DADAF1079EF2D2440A4DDE37D747DED5403592" />
+	</form>
+	<p>4 - SHA-256 hash of 3</p>
+	<form>
+		<input type='text' id='secondSHA256' size='90' value="507A5B8DFED0FC6FE8801743720CEDEC06AA5C6FCA72B07C49964492FB98A714" />
+	</form>
+	<p>5 - First 4 bytes of 4, this is the checksum</p>
+	<form>
+		<input type='text' id='CKHSUM' size='10' value="507A5B8D" />
+	</form>
+	<p>6 - Adding 5 at the end of 2</p>
+	<form>
+		<input type='text' id='extPrKeyCKHSUM' size='100' value="800C28FCA386C7A227600B2FE50B7CAE11EC86D3BF1FBE471BE89827E19D72AA1D507A5B8D" />
+	</form>
+	<p>7 - Base58 encoding of 6</p>
+	<form>
+		<input type='text' id='wif' name='wif2' size='70' value="5HueCGU8rMjxEXxiPuD5BDku4MkFqeZyd4dZ1jvhTVqvbTLvyTJ" />
+	</form>
+	
+	<form name="encoder" action="#" onSubmit="return false;" style="width:550px; border: 1px black solid;">
+	<br>
+	<div><strong>Bitcoin Address Base58 Encoder</strong></div>
+	<br>
+	Input:
+	<div><input type="text" id="eaddress" name="address" style="width: 500px; border-width: 1px; padding: 5px; font-family: courier" /></div>
+	<div><input type="button" id="eclick" value="Encode address from hex." style="width: 200px; border-width: 1px; padding: 5px;" onclick="this.form.result.value = process_address('encode', this.form.address.value);" /></div>
+	<div><input type="text" name="result" style="width: 500px; border-width: 1px; padding: 5px; font-family: courier" /></div>
+	</br>
+	</form>
+
+</div><!-- /.blurb -->
